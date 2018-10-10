@@ -1,0 +1,17 @@
+language: ruby
+cache:
+  - bundler
+before_script:
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+deploy:
+  provider: heroku
+  api_key:
+    secure: hQJh+R0/ycCnoTsekhy4mWCeJagzBDg7lZRsaMZ0OsVvBC6YmCGWx98zrEny/7rnvymya0owV24ZYI0FpvfPu/JtWTWGYH2AXWrhCmEaxM4Q4QcDjimryqDyR8dFek3NzD0PbqQHAX6oGE4WvoB6njRAr7lftJ8yih2bYyaatR3GieWEuoyFF/fwtreGzH6MuUCkwT0p7fHGLMacRsoxGJ2Pkop/4WCaFjponqv0VkvCjURlshs3He5o/OweLiBJG/VoLrAAMacNZvj7ElcCTIfEaSdxvTL6BYi8BB20d+//xWlrxHj2X59M5dM5+ZEptte1bUSbTCWCJDsk3TBp9szudU17NwOKBBjTGlz1PDdX5Ro8MNJ6ucIigu3P7FB94qpyB+ENx/v9l/XsnZRBNDsdbQ1v1QoHxMoLCq0PDvYvm711X+ChU9ALSiGwoC05VXEd398ktTg/xwlfWLesZGdqwJ+T6m5GMrlTrU+YE5RWousATonpUj7gZCRFHmgEKzQOcZGRdzcuu0+nVRjkuK9g5IGervwhAaaRbosmKBteN8dNIg0CmMpwYlTvpUal8VTI4m4X1JO5Pq4bR+d3kB0pShHlssUZ0RrJYjsG9J1kS3FJWYUHvk/z6kXG1kxGGKbPYISvS/5R8bQO0OvotlRSTcgf8tLi6b6IWvs4RZ8=
+  app: fmbk
+  on:
+    repo: AdeyBeeInc/family
+    branch: master
+  run:
+    - "rake db:migrate"
+    - "rake cleanup"
