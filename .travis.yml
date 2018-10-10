@@ -1,4 +1,4 @@
-language: ruby
+language: ruby 2.4.0
 cache:
   - bundler
 before_script:
